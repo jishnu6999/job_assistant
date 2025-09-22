@@ -5,29 +5,32 @@ export default function ResumeAnalyzer({ backend, user, onAnalyzed }) {
   const [loading, setLoading] = useState(false);
 
   const analyze = async () => {
+    if(!text) return alert('Paste resume text first');
     setLoading(true);
     try {
       const res = await fetch(`${backend}/api/resume/analyze`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ userId: user?.id, resumeText: text })
       });
       const data = await res.json();
       onAnalyzed(data);
-    } catch (err) {
+    } catch(err){
       console.error(err);
-      alert('Analysis failed - check backend.');
+      alert('Analysis failed');
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
     <div>
-      <h2>Resume Analyzer</h2>
-      <textarea rows={8} value={text} onChange={e => setText(e.target.value)} placeholder="Paste resume text here..." />
-      <button onClick={analyze} disabled={loading || !text}>{loading ? 'Analyzing...' : 'Analyze Resume'}</button>
+      <h3 className="font-semibold mb-2">Resume Analyzer</h3>
+      <textarea className="resumetext" value={text} onChange={e=>setText(e.target.value)} placeholder="Paste bullets or text..." />
+      <div className="mt-3 flex gap-2">
+        <button className="btn btn-primary" onClick={analyze} disabled={loading}>{loading ? 'Analyzing...' : 'Analyze'}</button>
+        <button className="btn btn-ghost" onClick={()=>{ setText(''); onAnalyzed(null); }}>Clear</button>
+      </div>
     </div>
   );
 }
-
