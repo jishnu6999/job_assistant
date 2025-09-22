@@ -40,7 +40,8 @@ body {
 .btn { @apply inline-flex items-center gap-2 px-4 py-2 rounded-md font-medium shadow-sm }
 .btn-primary { @apply bg-brand text-white hover:bg-emerald-700 }
 .btn-ghost { @apply bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 }
-.resumetext { @apply w-full border border-slate-200 rounded-md p-3 min-h-[12rem] resize-vertical; }
+/* NOTE: replaced resize-vertical (invalid) with resize-y */
+.resumetext { @apply w-full border border-slate-200 rounded-md p-3 min-h-[12rem] resize-y; }
 
 /* animated small card highlight */
 .card-hero {
