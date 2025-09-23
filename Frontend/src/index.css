@@ -1,8 +1,3 @@
-# backup current file just in case
-Copy-Item "C:\Users\jishn\job_assistant\Frontend\src\index.css" "C:\Users\jishn\job_assistant\Frontend\src\index.css.bak" -Force
-
-# overwrite with corrected CSS (no resize-vertical)
-$css = @'
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -53,7 +48,3 @@ body {
   background: linear-gradient(90deg, rgba(15,118,110,0.06), rgba(6,182,212,0.03));
   border-radius: calc(var(--radius) + 4px);
 }
-'@
-
-Set-Content -Path "C:\Users\jishn\job_assistant\Frontend\src\index.css" -Value $css -Encoding UTF8 -Force
-Write-Host "index.css overwritten. Backup at index.css.bak"
