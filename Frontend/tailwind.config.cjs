@@ -1,17 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html","./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx,ts,tsx}"
+  ],
   theme: {
     extend: {
       colors: {
-        brand: '#0f766e',
-        accent: '#06b6d4',
-        soft: '#eef2f3'
+        brand: "#2563eb",     // blue-600
+        brandDark: "#1d4ed8", // blue-700
+        ink: "#0f172a"        // slate-900
       },
       boxShadow: {
-        'soft-lg': '0 10px 25px rgba(2,6,23,0.08)'
+        soft: "0 10px 30px rgba(2,6,23,0.08)"
+      },
+      borderRadius: {
+        xl2: "1.25rem"
       }
-    }
+    },
   },
-  plugins: []
+  plugins: [],
 }
